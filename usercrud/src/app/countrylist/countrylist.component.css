@@ -1,0 +1,19 @@
+table {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+.example-spacer {
+  flex: 20 20 auto;
+}
+.span {
+  margin: auto;
+}
+
+.container-submit {
+  width: 80%;
+  padding-left: 20px;
+  padding-right: 100px;
+  margin-top: 20px;
+}

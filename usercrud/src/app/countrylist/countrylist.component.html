@@ -1,0 +1,64 @@
+<div class="container">
+  <div>
+    <h5 style="margin-top: 20px;">
+      <mat-toolbar>
+        <mat-toolbar-row color="accent">
+            <span class="span">Countries List</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </h5>
+  </div>
+  <div class="container-submit"> 
+  <app-addcountry></app-addcountry>
+
+    
+  
+    
+  </div>
+  <div class="search-div"></div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="_countrylist" matSort>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td> 
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="desc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Desrciption </th>
+        <td mat-cell *matCellDef="let element"> {{element.desc}} </td>
+      </ng-container>
+      <ng-container matColumnDef="area">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Area (KM^2) </th>
+        <td mat-cell *matCellDef="let element"> {{element.area}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="warn" (click)="onDelete(row.id)"><mat-icon>delete_outline</mat-icon></button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="loading" >
+        <th mat-footer-cell *matFooterCellDef colspan="6" style="text-align:center;">
+          Loading data..
+        </th>
+      </ng-container>
+
+      <ng-container matColumnDef="noData">
+        <th mat-footer-cell *matFooterCellDef colspan="6" style="text-align:center;">
+          - End of the Records -
+        </th>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></tr>
+      <tr mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length == 0)}"></tr>
+    </table>
+  </div>
+</div>
+
